@@ -1,0 +1,2794 @@
+$date
+	Thu Apr 27 00:52:29 2023
+$end
+$version
+	QuestaSim Version 2021.1
+$end
+$timescale
+	1ns
+$end
+
+$scope module ATM_tb $end
+$var parameter 32 ! P_WIDTH $end
+$var parameter 32 " C_WIDTH $end
+$var parameter 32 # B_WIDTH $end
+$var reg 1 $ clk_tb $end
+$var reg 1 % rst_tb $end
+$var reg 32 & threshold [31:0] $end
+$var reg 6 ' card_number [5:0] $end
+$var reg 1 ( card_in $end
+$var reg 1 ) button_0 $end
+$var reg 1 * button_1 $end
+$var reg 1 + button_2 $end
+$var reg 1 , button_3 $end
+$var reg 1 - button_4 $end
+$var reg 1 . button_5 $end
+$var reg 1 / button_6 $end
+$var reg 1 0 button_7 $end
+$var reg 1 1 button_8 $end
+$var reg 1 2 button_9 $end
+$var reg 1 3 enter_button $end
+$var reg 1 4 cancel_button $end
+$var reg 1 5 correct_button $end
+$var reg 1 6 withdraw_button $end
+$var reg 1 7 deposit_button $end
+$var reg 1 8 show_balance $end
+$var reg 1 9 another_service $end
+$var reg 1 : touch_100_button $end
+$var reg 1 ; touch_300_button $end
+$var reg 1 < touch_500_button $end
+$var reg 1 = touch_700_button $end
+$var reg 1 > touch_1000_button $end
+$var reg 1 ? multiple_100_button $end
+$var reg 1 @ multiple_1000_button $end
+$var reg 20 A actual_deposit_value [19:0] $end
+$var wire 1 B updated_balance [19] $end
+$var wire 1 C updated_balance [18] $end
+$var wire 1 D updated_balance [17] $end
+$var wire 1 E updated_balance [16] $end
+$var wire 1 F updated_balance [15] $end
+$var wire 1 G updated_balance [14] $end
+$var wire 1 H updated_balance [13] $end
+$var wire 1 I updated_balance [12] $end
+$var wire 1 J updated_balance [11] $end
+$var wire 1 K updated_balance [10] $end
+$var wire 1 L updated_balance [9] $end
+$var wire 1 M updated_balance [8] $end
+$var wire 1 N updated_balance [7] $end
+$var wire 1 O updated_balance [6] $end
+$var wire 1 P updated_balance [5] $end
+$var wire 1 Q updated_balance [4] $end
+$var wire 1 R updated_balance [3] $end
+$var wire 1 S updated_balance [2] $end
+$var wire 1 T updated_balance [1] $end
+$var wire 1 U updated_balance [0] $end
+$var wire 1 V wrong_password $end
+$var wire 1 W operation_done $end
+$var wire 1 X error $end
+
+$scope task reset $end
+$upscope $end
+
+$scope task initialize $end
+$upscope $end
+
+$scope task press_button $end
+$var reg 4 Y button [3:0] $end
+$upscope $end
+
+$scope task enter $end
+$upscope $end
+
+$scope module DUT $end
+$var parameter 32 Z P_WIDTH $end
+$var parameter 32 [ B_WIDTH $end
+$var parameter 32 \ C_WIDTH $end
+$var wire 1 ] clk $end
+$var wire 1 ^ rst $end
+$var wire 1 _ card_number [5] $end
+$var wire 1 ` card_number [4] $end
+$var wire 1 a card_number [3] $end
+$var wire 1 b card_number [2] $end
+$var wire 1 c card_number [1] $end
+$var wire 1 d card_number [0] $end
+$var wire 1 e card_in $end
+$var wire 1 f button_0 $end
+$var wire 1 g button_1 $end
+$var wire 1 h button_2 $end
+$var wire 1 i button_3 $end
+$var wire 1 j button_4 $end
+$var wire 1 k button_5 $end
+$var wire 1 l button_6 $end
+$var wire 1 m button_7 $end
+$var wire 1 n button_8 $end
+$var wire 1 o button_9 $end
+$var wire 1 p enter_button $end
+$var wire 1 q cancel_button $end
+$var wire 1 r correct_button $end
+$var wire 1 s withdraw_button $end
+$var wire 1 t deposit_button $end
+$var wire 1 u show_balance $end
+$var wire 1 v another_service $end
+$var wire 1 w touch_100_button $end
+$var wire 1 x touch_300_button $end
+$var wire 1 y touch_500_button $end
+$var wire 1 z touch_700_button $end
+$var wire 1 { touch_1000_button $end
+$var wire 1 | multiple_100_button $end
+$var wire 1 } multiple_1000_button $end
+$var wire 1 ~ actual_deposit_value [19] $end
+$var wire 1 !! actual_deposit_value [18] $end
+$var wire 1 "! actual_deposit_value [17] $end
+$var wire 1 #! actual_deposit_value [16] $end
+$var wire 1 $! actual_deposit_value [15] $end
+$var wire 1 %! actual_deposit_value [14] $end
+$var wire 1 &! actual_deposit_value [13] $end
+$var wire 1 '! actual_deposit_value [12] $end
+$var wire 1 (! actual_deposit_value [11] $end
+$var wire 1 )! actual_deposit_value [10] $end
+$var wire 1 *! actual_deposit_value [9] $end
+$var wire 1 +! actual_deposit_value [8] $end
+$var wire 1 ,! actual_deposit_value [7] $end
+$var wire 1 -! actual_deposit_value [6] $end
+$var wire 1 .! actual_deposit_value [5] $end
+$var wire 1 /! actual_deposit_value [4] $end
+$var wire 1 0! actual_deposit_value [3] $end
+$var wire 1 1! actual_deposit_value [2] $end
+$var wire 1 2! actual_deposit_value [1] $end
+$var wire 1 3! actual_deposit_value [0] $end
+$var wire 1 4! threshold [31] $end
+$var wire 1 5! threshold [30] $end
+$var wire 1 6! threshold [29] $end
+$var wire 1 7! threshold [28] $end
+$var wire 1 8! threshold [27] $end
+$var wire 1 9! threshold [26] $end
+$var wire 1 :! threshold [25] $end
+$var wire 1 ;! threshold [24] $end
+$var wire 1 <! threshold [23] $end
+$var wire 1 =! threshold [22] $end
+$var wire 1 >! threshold [21] $end
+$var wire 1 ?! threshold [20] $end
+$var wire 1 @! threshold [19] $end
+$var wire 1 A! threshold [18] $end
+$var wire 1 B! threshold [17] $end
+$var wire 1 C! threshold [16] $end
+$var wire 1 D! threshold [15] $end
+$var wire 1 E! threshold [14] $end
+$var wire 1 F! threshold [13] $end
+$var wire 1 G! threshold [12] $end
+$var wire 1 H! threshold [11] $end
+$var wire 1 I! threshold [10] $end
+$var wire 1 J! threshold [9] $end
+$var wire 1 K! threshold [8] $end
+$var wire 1 L! threshold [7] $end
+$var wire 1 M! threshold [6] $end
+$var wire 1 N! threshold [5] $end
+$var wire 1 O! threshold [4] $end
+$var wire 1 P! threshold [3] $end
+$var wire 1 Q! threshold [2] $end
+$var wire 1 R! threshold [1] $end
+$var wire 1 S! threshold [0] $end
+$var wire 1 B updated_balance [19] $end
+$var wire 1 C updated_balance [18] $end
+$var wire 1 D updated_balance [17] $end
+$var wire 1 E updated_balance [16] $end
+$var wire 1 F updated_balance [15] $end
+$var wire 1 G updated_balance [14] $end
+$var wire 1 H updated_balance [13] $end
+$var wire 1 I updated_balance [12] $end
+$var wire 1 J updated_balance [11] $end
+$var wire 1 K updated_balance [10] $end
+$var wire 1 L updated_balance [9] $end
+$var wire 1 M updated_balance [8] $end
+$var wire 1 N updated_balance [7] $end
+$var wire 1 O updated_balance [6] $end
+$var wire 1 P updated_balance [5] $end
+$var wire 1 Q updated_balance [4] $end
+$var wire 1 R updated_balance [3] $end
+$var wire 1 S updated_balance [2] $end
+$var wire 1 T updated_balance [1] $end
+$var wire 1 U updated_balance [0] $end
+$var wire 1 W operation_done $end
+$var wire 1 X error $end
+$var wire 1 V wrong_password $end
+$var wire 1 T! entry_value [19] $end
+$var wire 1 U! entry_value [18] $end
+$var wire 1 V! entry_value [17] $end
+$var wire 1 W! entry_value [16] $end
+$var wire 1 X! entry_value [15] $end
+$var wire 1 Y! entry_value [14] $end
+$var wire 1 Z! entry_value [13] $end
+$var wire 1 [! entry_value [12] $end
+$var wire 1 \! entry_value [11] $end
+$var wire 1 ]! entry_value [10] $end
+$var wire 1 ^! entry_value [9] $end
+$var wire 1 _! entry_value [8] $end
+$var wire 1 `! entry_value [7] $end
+$var wire 1 a! entry_value [6] $end
+$var wire 1 b! entry_value [5] $end
+$var wire 1 c! entry_value [4] $end
+$var wire 1 d! entry_value [3] $end
+$var wire 1 e! entry_value [2] $end
+$var wire 1 f! entry_value [1] $end
+$var wire 1 g! entry_value [0] $end
+$var wire 1 h! password [15] $end
+$var wire 1 i! password [14] $end
+$var wire 1 j! password [13] $end
+$var wire 1 k! password [12] $end
+$var wire 1 l! password [11] $end
+$var wire 1 m! password [10] $end
+$var wire 1 n! password [9] $end
+$var wire 1 o! password [8] $end
+$var wire 1 p! password [7] $end
+$var wire 1 q! password [6] $end
+$var wire 1 r! password [5] $end
+$var wire 1 s! password [4] $end
+$var wire 1 t! password [3] $end
+$var wire 1 u! password [2] $end
+$var wire 1 v! password [1] $end
+$var wire 1 w! password [0] $end
+$var wire 1 x! balance [19] $end
+$var wire 1 y! balance [18] $end
+$var wire 1 z! balance [17] $end
+$var wire 1 {! balance [16] $end
+$var wire 1 |! balance [15] $end
+$var wire 1 }! balance [14] $end
+$var wire 1 ~! balance [13] $end
+$var wire 1 !" balance [12] $end
+$var wire 1 "" balance [11] $end
+$var wire 1 #" balance [10] $end
+$var wire 1 $" balance [9] $end
+$var wire 1 %" balance [8] $end
+$var wire 1 &" balance [7] $end
+$var wire 1 '" balance [6] $end
+$var wire 1 (" balance [5] $end
+$var wire 1 )" balance [4] $end
+$var wire 1 *" balance [3] $end
+$var wire 1 +" balance [2] $end
+$var wire 1 ," balance [1] $end
+$var wire 1 -" balance [0] $end
+$var wire 1 ." pass_en $end
+$var wire 1 /" in_password [15] $end
+$var wire 1 0" in_password [14] $end
+$var wire 1 1" in_password [13] $end
+$var wire 1 2" in_password [12] $end
+$var wire 1 3" in_password [11] $end
+$var wire 1 4" in_password [10] $end
+$var wire 1 5" in_password [9] $end
+$var wire 1 6" in_password [8] $end
+$var wire 1 7" in_password [7] $end
+$var wire 1 8" in_password [6] $end
+$var wire 1 9" in_password [5] $end
+$var wire 1 :" in_password [4] $end
+$var wire 1 ;" in_password [3] $end
+$var wire 1 <" in_password [2] $end
+$var wire 1 =" in_password [1] $end
+$var wire 1 >" in_password [0] $end
+$var wire 1 ?" operation [1] $end
+$var wire 1 @" operation [0] $end
+$var wire 1 A" time_out $end
+$var wire 1 B" start_timer $end
+$var wire 1 C" restart_timer $end
+$var wire 1 D" card_out $end
+
+$scope module U0_card_handling $end
+$var parameter 32 E" C_WIDTH $end
+$var parameter 32 F" P_WIDTH $end
+$var parameter 32 G" B_WIDTH $end
+$var wire 1 ] clk $end
+$var wire 1 ^ rst $end
+$var wire 1 _ card_number [5] $end
+$var wire 1 ` card_number [4] $end
+$var wire 1 a card_number [3] $end
+$var wire 1 b card_number [2] $end
+$var wire 1 c card_number [1] $end
+$var wire 1 d card_number [0] $end
+$var wire 1 e card_in $end
+$var wire 1 D" card_out $end
+$var wire 1 B updated_balance [19] $end
+$var wire 1 C updated_balance [18] $end
+$var wire 1 D updated_balance [17] $end
+$var wire 1 E updated_balance [16] $end
+$var wire 1 F updated_balance [15] $end
+$var wire 1 G updated_balance [14] $end
+$var wire 1 H updated_balance [13] $end
+$var wire 1 I updated_balance [12] $end
+$var wire 1 J updated_balance [11] $end
+$var wire 1 K updated_balance [10] $end
+$var wire 1 L updated_balance [9] $end
+$var wire 1 M updated_balance [8] $end
+$var wire 1 N updated_balance [7] $end
+$var wire 1 O updated_balance [6] $end
+$var wire 1 P updated_balance [5] $end
+$var wire 1 Q updated_balance [4] $end
+$var wire 1 R updated_balance [3] $end
+$var wire 1 S updated_balance [2] $end
+$var wire 1 T updated_balance [1] $end
+$var wire 1 U updated_balance [0] $end
+$var reg 16 H" password [15:0] $end
+$var reg 20 I" balance [19:0] $end
+$var wire 1 ." pass_en $end
+$upscope $end
+
+$scope module U0_user_interface $end
+$var parameter 32 J" P_WIDTH $end
+$var parameter 32 K" B_WIDTH $end
+$var wire 1 ] clk $end
+$var wire 1 ^ rst $end
+$var wire 1 e card_in $end
+$var wire 1 f button_0 $end
+$var wire 1 g button_1 $end
+$var wire 1 h button_2 $end
+$var wire 1 i button_3 $end
+$var wire 1 j button_4 $end
+$var wire 1 k button_5 $end
+$var wire 1 l button_6 $end
+$var wire 1 m button_7 $end
+$var wire 1 n button_8 $end
+$var wire 1 o button_9 $end
+$var wire 1 p enter_button $end
+$var wire 1 q cancel_button $end
+$var wire 1 r correct_button $end
+$var wire 1 w touch_100_button $end
+$var wire 1 x touch_300_button $end
+$var wire 1 y touch_500_button $end
+$var wire 1 z touch_700_button $end
+$var wire 1 { touch_1000_button $end
+$var wire 1 | multiple_100_button $end
+$var wire 1 } multiple_1000_button $end
+$var wire 1 s withdraw_button $end
+$var wire 1 t deposit_button $end
+$var wire 1 u show_balance $end
+$var wire 1 v another_service $end
+$var reg 20 L" entry_value [19:0] $end
+$var reg 16 M" in_password [15:0] $end
+$var reg 2 N" operation [1:0] $end
+$var reg 2 O" count [1:0] $end
+$var reg 4 P" temp1 [3:0] $end
+$var reg 4 Q" temp2 [3:0] $end
+$var reg 4 R" temp3 [3:0] $end
+$var reg 4 S" temp4 [3:0] $end
+$var reg 16 T" in_password_temp [15:0] $end
+$var reg 20 U" entry_value_temp [19:0] $end
+$var reg 1 V" withdraw_hold $end
+$var reg 1 W" withdraw_100_hold $end
+$var reg 1 X" withdraw_1000_hold $end
+$upscope $end
+
+$scope module U0_timer $end
+$var wire 1 ] clk $end
+$var wire 1 ^ rst $end
+$var wire 1 B" start $end
+$var wire 1 C" restart $end
+$var wire 1 4! threshold [31] $end
+$var wire 1 5! threshold [30] $end
+$var wire 1 6! threshold [29] $end
+$var wire 1 7! threshold [28] $end
+$var wire 1 8! threshold [27] $end
+$var wire 1 9! threshold [26] $end
+$var wire 1 :! threshold [25] $end
+$var wire 1 ;! threshold [24] $end
+$var wire 1 <! threshold [23] $end
+$var wire 1 =! threshold [22] $end
+$var wire 1 >! threshold [21] $end
+$var wire 1 ?! threshold [20] $end
+$var wire 1 @! threshold [19] $end
+$var wire 1 A! threshold [18] $end
+$var wire 1 B! threshold [17] $end
+$var wire 1 C! threshold [16] $end
+$var wire 1 D! threshold [15] $end
+$var wire 1 E! threshold [14] $end
+$var wire 1 F! threshold [13] $end
+$var wire 1 G! threshold [12] $end
+$var wire 1 H! threshold [11] $end
+$var wire 1 I! threshold [10] $end
+$var wire 1 J! threshold [9] $end
+$var wire 1 K! threshold [8] $end
+$var wire 1 L! threshold [7] $end
+$var wire 1 M! threshold [6] $end
+$var wire 1 N! threshold [5] $end
+$var wire 1 O! threshold [4] $end
+$var wire 1 P! threshold [3] $end
+$var wire 1 Q! threshold [2] $end
+$var wire 1 R! threshold [1] $end
+$var wire 1 S! threshold [0] $end
+$var reg 1 Y" time_out $end
+$var reg 32 Z" counter [31:0] $end
+$upscope $end
+
+$scope module U0_ATM_FSM $end
+$var parameter 32 [" P_WIDTH $end
+$var parameter 32 \" B_WIDTH $end
+$var parameter 4 ]" IDLE $end
+$var parameter 4 ^" WRITE_PASS $end
+$var parameter 4 _" CHECK_PASS $end
+$var parameter 4 `" OPERATION $end
+$var parameter 4 a" WRITE_WITHDRAW $end
+$var parameter 4 b" WITHDRAW $end
+$var parameter 4 c" WRITE_DEPOSIT $end
+$var parameter 4 d" DEPOSIT $end
+$var parameter 4 e" BALANCE $end
+$var wire 1 ] clk $end
+$var wire 1 ^ rst $end
+$var wire 1 A" time_out $end
+$var wire 1 h! user_password [15] $end
+$var wire 1 i! user_password [14] $end
+$var wire 1 j! user_password [13] $end
+$var wire 1 k! user_password [12] $end
+$var wire 1 l! user_password [11] $end
+$var wire 1 m! user_password [10] $end
+$var wire 1 n! user_password [9] $end
+$var wire 1 o! user_password [8] $end
+$var wire 1 p! user_password [7] $end
+$var wire 1 q! user_password [6] $end
+$var wire 1 r! user_password [5] $end
+$var wire 1 s! user_password [4] $end
+$var wire 1 t! user_password [3] $end
+$var wire 1 u! user_password [2] $end
+$var wire 1 v! user_password [1] $end
+$var wire 1 w! user_password [0] $end
+$var wire 1 x! current_balance [19] $end
+$var wire 1 y! current_balance [18] $end
+$var wire 1 z! current_balance [17] $end
+$var wire 1 {! current_balance [16] $end
+$var wire 1 |! current_balance [15] $end
+$var wire 1 }! current_balance [14] $end
+$var wire 1 ~! current_balance [13] $end
+$var wire 1 !" current_balance [12] $end
+$var wire 1 "" current_balance [11] $end
+$var wire 1 #" current_balance [10] $end
+$var wire 1 $" current_balance [9] $end
+$var wire 1 %" current_balance [8] $end
+$var wire 1 &" current_balance [7] $end
+$var wire 1 '" current_balance [6] $end
+$var wire 1 (" current_balance [5] $end
+$var wire 1 )" current_balance [4] $end
+$var wire 1 *" current_balance [3] $end
+$var wire 1 +" current_balance [2] $end
+$var wire 1 ," current_balance [1] $end
+$var wire 1 -" current_balance [0] $end
+$var wire 1 ." pass_en $end
+$var wire 1 /" in_password [15] $end
+$var wire 1 0" in_password [14] $end
+$var wire 1 1" in_password [13] $end
+$var wire 1 2" in_password [12] $end
+$var wire 1 3" in_password [11] $end
+$var wire 1 4" in_password [10] $end
+$var wire 1 5" in_password [9] $end
+$var wire 1 6" in_password [8] $end
+$var wire 1 7" in_password [7] $end
+$var wire 1 8" in_password [6] $end
+$var wire 1 9" in_password [5] $end
+$var wire 1 :" in_password [4] $end
+$var wire 1 ;" in_password [3] $end
+$var wire 1 <" in_password [2] $end
+$var wire 1 =" in_password [1] $end
+$var wire 1 >" in_password [0] $end
+$var wire 1 p enter_button $end
+$var wire 1 q cancel_button $end
+$var wire 1 r correction_button $end
+$var wire 1 v another_service $end
+$var wire 1 ?" operation [1] $end
+$var wire 1 @" operation [0] $end
+$var wire 1 ~ actual_deposit_value [19] $end
+$var wire 1 !! actual_deposit_value [18] $end
+$var wire 1 "! actual_deposit_value [17] $end
+$var wire 1 #! actual_deposit_value [16] $end
+$var wire 1 $! actual_deposit_value [15] $end
+$var wire 1 %! actual_deposit_value [14] $end
+$var wire 1 &! actual_deposit_value [13] $end
+$var wire 1 '! actual_deposit_value [12] $end
+$var wire 1 (! actual_deposit_value [11] $end
+$var wire 1 )! actual_deposit_value [10] $end
+$var wire 1 *! actual_deposit_value [9] $end
+$var wire 1 +! actual_deposit_value [8] $end
+$var wire 1 ,! actual_deposit_value [7] $end
+$var wire 1 -! actual_deposit_value [6] $end
+$var wire 1 .! actual_deposit_value [5] $end
+$var wire 1 /! actual_deposit_value [4] $end
+$var wire 1 0! actual_deposit_value [3] $end
+$var wire 1 1! actual_deposit_value [2] $end
+$var wire 1 2! actual_deposit_value [1] $end
+$var wire 1 3! actual_deposit_value [0] $end
+$var wire 1 T! entry_value [19] $end
+$var wire 1 U! entry_value [18] $end
+$var wire 1 V! entry_value [17] $end
+$var wire 1 W! entry_value [16] $end
+$var wire 1 X! entry_value [15] $end
+$var wire 1 Y! entry_value [14] $end
+$var wire 1 Z! entry_value [13] $end
+$var wire 1 [! entry_value [12] $end
+$var wire 1 \! entry_value [11] $end
+$var wire 1 ]! entry_value [10] $end
+$var wire 1 ^! entry_value [9] $end
+$var wire 1 _! entry_value [8] $end
+$var wire 1 `! entry_value [7] $end
+$var wire 1 a! entry_value [6] $end
+$var wire 1 b! entry_value [5] $end
+$var wire 1 c! entry_value [4] $end
+$var wire 1 d! entry_value [3] $end
+$var wire 1 e! entry_value [2] $end
+$var wire 1 f! entry_value [1] $end
+$var wire 1 g! entry_value [0] $end
+$var reg 20 f" updated_balance [19:0] $end
+$var reg 1 g" wrong_password $end
+$var reg 1 h" operation_done $end
+$var reg 1 i" error $end
+$var reg 1 j" start_timer $end
+$var wire 1 C" restart_timer $end
+$var reg 1 k" card_out $end
+$var reg 4 l" current_state [3:0] $end
+$var reg 4 m" next_state [3:0] $end
+$var reg 20 n" updated_balance_comb [19:0] $end
+$var reg 2 o" error_count [1:0] $end
+$var reg 2 p" error_count_reg [1:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1$
+1%
+b1111 &
+bx '
+x(
+0)
+0*
+0+
+0,
+0-
+0.
+0/
+00
+01
+02
+03
+04
+05
+06
+07
+08
+09
+x:
+x;
+x<
+x=
+x>
+x?
+x@
+b0 A
+bx Y
+b0 H"
+b0 I"
+bx L"
+bx M"
+b11 N"
+b0 O"
+bx P"
+bx Q"
+bx R"
+bx S"
+bx T"
+bx U"
+0V"
+0W"
+0X"
+xY"
+b0 Z"
+bx f"
+xg"
+xh"
+xi"
+xj"
+xk"
+bx l"
+bx m"
+bx n"
+b0 o"
+b0 p"
+b10000 !
+b110 "
+b10100 #
+b10000 Z
+b10100 [
+b110 \
+b110 E"
+b10000 F"
+b10100 G"
+b10000 J"
+b10100 K"
+b10000 ["
+b10100 \"
+b0 ]"
+b1 ^"
+b10 _"
+b11 `"
+b100 a"
+b101 b"
+b110 c"
+b111 d"
+b1000 e"
+xU
+xT
+xS
+xR
+xQ
+xP
+xO
+xN
+xM
+xL
+xK
+xJ
+xI
+xH
+xG
+xF
+xE
+xD
+xC
+xB
+xV
+xW
+xX
+xg!
+xf!
+xe!
+xd!
+xc!
+xb!
+xa!
+x`!
+x_!
+x^!
+x]!
+x\!
+x[!
+xZ!
+xY!
+xX!
+xW!
+xV!
+xU!
+xT!
+0w!
+0v!
+0u!
+0t!
+0s!
+0r!
+0q!
+0p!
+0o!
+0n!
+0m!
+0l!
+0k!
+0j!
+0i!
+0h!
+0-"
+0,"
+0+"
+0*"
+0)"
+0("
+0'"
+0&"
+0%"
+0$"
+0#"
+0""
+0!"
+0~!
+0}!
+0|!
+0{!
+0z!
+0y!
+0x!
+x."
+x>"
+x="
+x<"
+x;"
+x:"
+x9"
+x8"
+x7"
+x6"
+x5"
+x4"
+x3"
+x2"
+x1"
+x0"
+x/"
+1@"
+1?"
+xA"
+xB"
+0C"
+xD"
+1S!
+1R!
+1Q!
+1P!
+0O!
+0N!
+0M!
+0L!
+0K!
+0J!
+0I!
+0H!
+0G!
+0F!
+0E!
+0D!
+0C!
+0B!
+0A!
+0@!
+0?!
+0>!
+0=!
+0<!
+0;!
+0:!
+09!
+08!
+07!
+06!
+05!
+04!
+03!
+02!
+01!
+00!
+0/!
+0.!
+0-!
+0,!
+0+!
+0*!
+0)!
+0(!
+0'!
+0&!
+0%!
+0$!
+0#!
+0"!
+0!!
+0~
+x}
+x|
+x{
+xz
+xy
+xx
+xw
+0v
+0u
+0t
+0s
+0r
+0q
+0p
+0o
+0n
+0m
+0l
+0k
+0j
+0i
+0h
+0g
+0f
+xe
+xd
+xc
+xb
+xa
+x`
+x_
+1^
+1]
+$end
+#1
+0%
+0^
+b0 M"
+b0 L"
+b0 P"
+b0 Q"
+b0 R"
+b0 S"
+0Y"
+b0 f"
+b0 l"
+0U
+0T
+0S
+0R
+0Q
+0P
+0O
+0N
+0M
+0L
+0K
+0J
+0I
+0H
+0G
+0F
+0E
+0D
+0C
+0B
+0g!
+0f!
+0e!
+0d!
+0c!
+0b!
+0a!
+0`!
+0_!
+0^!
+0]!
+0\!
+0[!
+0Z!
+0Y!
+0X!
+0W!
+0V!
+0U!
+0T!
+0>"
+0="
+0<"
+0;"
+0:"
+09"
+08"
+07"
+06"
+05"
+04"
+03"
+02"
+01"
+00"
+0/"
+0A"
+b0 m"
+0g"
+0h"
+0i"
+b0 n"
+0j"
+b0 U"
+b0 T"
+0V
+0W
+0X
+0B"
+#2
+1%
+1^
+#5
+0$
+0]
+#7
+b111011 '
+1d
+1c
+0b
+1a
+1`
+1_
+#10
+1$
+1]
+b11010100000110 H"
+b1100001101010000 I"
+1)"
+1'"
+1%"
+1$"
+1}!
+1|!
+1v!
+1u!
+1o!
+1m!
+1k!
+1j!
+#12
+1(
+1e
+1."
+b1 m"
+#15
+0$
+0]
+#20
+1$
+1]
+b1 l"
+b1100001101010000 f"
+1Q
+1O
+1M
+1L
+1G
+1F
+b1100001101010000 n"
+1j"
+0k"
+1B"
+0D"
+#22
+0(
+0e
+0."
+#25
+0$
+0]
+#30
+1$
+1]
+b1 Z"
+#35
+0$
+0]
+#40
+1$
+1]
+b10 Z"
+#42
+b11 Y
+1,
+1i
+#45
+0$
+0]
+#50
+1$
+1]
+b11 P"
+b1 O"
+b11 Z"
+#52
+b101 Y
+0,
+1.
+0i
+1k
+#55
+0$
+0]
+#60
+1$
+1]
+b100 Z"
+b101 Q"
+b10 O"
+#62
+b0 Y
+0.
+1)
+1f
+0k
+#65
+0$
+0]
+#70
+1$
+1]
+b11 O"
+b101 Z"
+#72
+b110 Y
+0)
+1/
+0f
+1l
+#75
+0$
+0]
+#80
+1$
+1]
+b110 Z"
+b110 S"
+b0 O"
+#82
+b1011 Y
+0/
+13
+0l
+1p
+b10 m"
+b11010100000110 T"
+#85
+0$
+0]
+#90
+1$
+1]
+b11010100000110 M"
+b10 l"
+b111 Z"
+1="
+1<"
+16"
+14"
+12"
+11"
+0j"
+b11 m"
+0B"
+#92
+03
+0p
+#95
+0$
+0]
+#100
+1$
+1]
+b0 Z"
+b11 l"
+1j"
+1B"
+#105
+0$
+0]
+#110
+1$
+1]
+b1 Z"
+#112
+16
+1s
+1V"
+b0 N"
+0@"
+0?"
+1C"
+b100 m"
+#115
+0$
+0]
+#120
+1$
+1]
+b100 l"
+b0 Z"
+#122
+06
+0s
+b11 N"
+1@"
+1?"
+0C"
+#125
+0$
+0]
+#130
+1$
+1]
+b1 Z"
+#132
+1<
+1y
+b111110100 U"
+0V"
+#135
+0$
+0]
+#140
+1$
+1]
+b111110100 L"
+b10 Z"
+1e!
+1c!
+1b!
+1a!
+1`!
+1_!
+#142
+0<
+13
+0y
+1p
+b101 m"
+#145
+0$
+0]
+#150
+1$
+1]
+b101 l"
+b11 Z"
+b1100000101011100 n"
+1h"
+1W
+#152
+03
+0p
+#155
+0$
+0]
+#160
+1$
+1]
+b1100000101011100 f"
+b100 Z"
+1S
+1R
+0L
+#165
+0$
+0]
+#170
+1$
+1]
+b101 Z"
+#175
+0$
+0]
+#180
+1$
+1]
+b110 Z"
+#182
+19
+1v
+b11 m"
+#185
+0$
+0]
+#190
+1$
+1]
+b11 l"
+b111 Z"
+0h"
+0W
+#192
+09
+0v
+#195
+0$
+0]
+#200
+1$
+1]
+b1000 Z"
+#205
+0$
+0]
+#210
+1$
+1]
+b1001 Z"
+#212
+17
+1t
+1V"
+b1 N"
+0?"
+1C"
+b110 m"
+#215
+0$
+0]
+#220
+1$
+1]
+b110 l"
+b0 Z"
+#222
+07
+0t
+b11 N"
+1?"
+0C"
+#225
+0$
+0]
+#230
+1$
+1]
+b1 Z"
+#232
+b1010111100 A
+1=
+11!
+10!
+1/!
+1.!
+1,!
+1*!
+1z
+b1010111100 U"
+0V"
+#235
+0$
+0]
+#240
+1$
+1]
+b1010111100 L"
+b10 Z"
+1d!
+0a!
+0_!
+1^!
+#242
+0=
+13
+0z
+1p
+b111 m"
+#245
+0$
+0]
+#250
+1$
+1]
+b111 l"
+b11 Z"
+b1100010000011000 n"
+1h"
+1W
+#252
+03
+0p
+#255
+0$
+0]
+#260
+1$
+1]
+b1100010000011000 f"
+b100 Z"
+0S
+0O
+0M
+1K
+#265
+0$
+0]
+#270
+1$
+1]
+b101 Z"
+#275
+0$
+0]
+#280
+1$
+1]
+b110 Z"
+#282
+19
+1v
+b11 m"
+#285
+0$
+0]
+#290
+1$
+1]
+b11 l"
+b111 Z"
+0h"
+0W
+#292
+09
+0v
+#295
+0$
+0]
+#300
+1$
+1]
+b1000 Z"
+#305
+0$
+0]
+#310
+1$
+1]
+b1001 Z"
+#312
+18
+1u
+b10 N"
+0@"
+1C"
+b1000 m"
+#315
+0$
+0]
+#320
+1$
+1]
+b1000 l"
+b0 Z"
+#322
+08
+0u
+b11 N"
+1@"
+0C"
+#325
+0$
+0]
+#330
+1$
+1]
+b1 Z"
+#335
+0$
+0]
+#340
+1$
+1]
+b10 Z"
+#345
+0$
+0]
+#350
+1$
+1]
+b11 Z"
+#352
+14
+1q
+b0 m"
+1k"
+1D"
+#355
+0$
+0]
+#360
+1$
+1]
+b0 l"
+b100 Z"
+0j"
+0B"
+#362
+04
+0q
+#365
+0$
+0]
+#367
+b110001 '
+0c
+0a
+#370
+1$
+1]
+b11001101110000 H"
+b11111010000 I"
+b0 Z"
+1&"
+1#"
+0}!
+0|!
+0v!
+0u!
+1s!
+1r!
+1q!
+1n!
+0m!
+#372
+1(
+1e
+1."
+b1 m"
+#375
+0$
+0]
+#380
+1$
+1]
+b1 l"
+b11111010000 f"
+0R
+1O
+1N
+1M
+1L
+0G
+0F
+b11111010000 n"
+1j"
+0k"
+1B"
+0D"
+#382
+0(
+0e
+0."
+#385
+0$
+0]
+#390
+1$
+1]
+b1 Z"
+#395
+0$
+0]
+#400
+1$
+1]
+b10 Z"
+#402
+b11 Y
+1,
+1i
+#405
+0$
+0]
+#410
+1$
+1]
+b1 O"
+b11 Z"
+#412
+0,
+1,
+#415
+0$
+0]
+#420
+1$
+1]
+b100 Z"
+b11 Q"
+b10 O"
+#422
+b111 Y
+0,
+10
+0i
+1m
+#425
+0$
+0]
+#430
+1$
+1]
+b111 R"
+b11 O"
+b101 Z"
+#432
+b1 Y
+00
+1*
+0m
+1g
+#435
+0$
+0]
+#440
+1$
+1]
+b110 Z"
+b1 S"
+b0 O"
+#442
+b1011 Y
+0*
+13
+0g
+1p
+b10 m"
+b11001101110001 T"
+#445
+0$
+0]
+#450
+1$
+1]
+b11001101110001 M"
+b10 l"
+b111 Z"
+1>"
+0="
+0<"
+1:"
+19"
+18"
+15"
+04"
+0j"
+1g"
+b1 o"
+b1 m"
+0B"
+1V
+#452
+03
+0p
+b0 o"
+b1 o"
+#455
+0$
+0]
+#460
+1$
+1]
+b1 p"
+b0 Z"
+b1 l"
+0g"
+1j"
+b0 o"
+0V
+1B"
+#465
+0$
+0]
+#470
+1$
+1]
+b1 Z"
+b0 p"
+#475
+0$
+0]
+#480
+1$
+1]
+b10 Z"
+#485
+0$
+0]
+#490
+1$
+1]
+b11 Z"
+#492
+b11 Y
+1,
+1i
+#495
+0$
+0]
+#500
+1$
+1]
+b1 O"
+b100 Z"
+#502
+0,
+1,
+#505
+0$
+0]
+#510
+1$
+1]
+b101 Z"
+b10 O"
+#512
+b111 Y
+0,
+10
+0i
+1m
+#515
+0$
+0]
+#520
+1$
+1]
+b11 O"
+b110 Z"
+#522
+b0 Y
+00
+1)
+1f
+0m
+#525
+0$
+0]
+#530
+1$
+1]
+b111 Z"
+b0 S"
+b0 O"
+#532
+b1011 Y
+0)
+13
+0f
+1p
+b10 m"
+b11001101110000 T"
+#535
+0$
+0]
+#540
+1$
+1]
+b11001101110000 M"
+b10 l"
+b1000 Z"
+0>"
+0j"
+b11 m"
+0B"
+#542
+03
+0p
+#545
+0$
+0]
+#550
+1$
+1]
+b0 Z"
+b11 l"
+1j"
+1B"
+#555
+0$
+0]
+#560
+1$
+1]
+b1 Z"
+#562
+16
+1s
+1V"
+b0 N"
+0@"
+0?"
+1C"
+b100 m"
+#565
+0$
+0]
+#570
+1$
+1]
+b100 l"
+b0 Z"
+#572
+06
+0s
+b11 N"
+1@"
+1?"
+0C"
+#575
+0$
+0]
+#580
+1$
+1]
+b1 Z"
+#582
+1?
+1|
+1W"
+#585
+0$
+0]
+#590
+1$
+1]
+b10 Z"
+#592
+0?
+0|
+#595
+0$
+0]
+#600
+1$
+1]
+b11 Z"
+#602
+b10 Y
+1+
+1h
+b11001000 U"
+0W"
+0V"
+#605
+0$
+0]
+#610
+1$
+1]
+b11001000 L"
+b10 P"
+b1 O"
+b100 Z"
+0e!
+0c!
+0b!
+1a!
+0^!
+#612
+b1011 Y
+0+
+13
+0h
+1p
+b101 m"
+b10001101110000 T"
+#615
+0$
+0]
+#620
+1$
+1]
+b101 l"
+b101 Z"
+b10001101110000 M"
+02"
+b11100001000 n"
+1h"
+1W
+#622
+03
+0p
+#625
+0$
+0]
+#630
+1$
+1]
+b11100001000 f"
+b110 Z"
+1R
+0Q
+0O
+0N
+#635
+0$
+0]
+#640
+1$
+1]
+b111 Z"
+#645
+0$
+0]
+#650
+1$
+1]
+b1000 Z"
+#652
+14
+1q
+b0 m"
+1k"
+1D"
+#655
+0$
+0]
+#660
+1$
+1]
+b0 l"
+b1001 Z"
+0h"
+0j"
+0W
+0B"
+#662
+04
+0q
+#665
+0$
+0]
+#670
+1$
+1]
+b0 Z"
+#675
+0$
+0]
+#680
+1$
+1]
+#685
+0$
+0]
+#687
+b110011 '
+1c
+#690
+1$
+1]
+b100000001110110 H"
+b11000011010100000 I"
+0)"
+1("
+0'"
+0%"
+1|!
+1{!
+1v!
+1u!
+0o!
+0n!
+0k!
+0j!
+1i!
+#692
+1(
+1e
+1."
+b1 m"
+#695
+0$
+0]
+#700
+1$
+1]
+b1 l"
+b0 O"
+b11000011010100000 f"
+0R
+1P
+1N
+0M
+1F
+1E
+b11000011010100000 n"
+1j"
+0k"
+1B"
+0D"
+#702
+0(
+0e
+0."
+#705
+0$
+0]
+#710
+1$
+1]
+b1 Z"
+#715
+0$
+0]
+#720
+1$
+1]
+b10 Z"
+#722
+b100 Y
+1-
+1j
+#725
+0$
+0]
+#730
+1$
+1]
+b100 P"
+b1 O"
+b11 Z"
+#732
+b0 Y
+0-
+1)
+1f
+0j
+#735
+0$
+0]
+#740
+1$
+1]
+b100 Z"
+b0 Q"
+b10 O"
+#742
+b111 Y
+0)
+10
+0f
+1m
+#745
+0$
+0]
+#750
+1$
+1]
+b11 O"
+b101 Z"
+#752
+b110 Y
+00
+1/
+0m
+1l
+#755
+0$
+0]
+#760
+1$
+1]
+b110 Z"
+b110 S"
+b0 O"
+#762
+b1011 Y
+0/
+13
+0l
+1p
+b10 m"
+b100000001110110 T"
+#765
+0$
+0]
+#770
+1$
+1]
+b100000001110110 M"
+b10 l"
+b111 Z"
+1="
+1<"
+06"
+05"
+01"
+10"
+0j"
+b11 m"
+0B"
+#772
+03
+0p
+#775
+0$
+0]
+#780
+1$
+1]
+b0 Z"
+b11 l"
+1j"
+1B"
+#785
+0$
+0]
+#790
+1$
+1]
+b1 Z"
+#792
+16
+1s
+1V"
+b0 N"
+0@"
+0?"
+1C"
+b100 m"
+#795
+0$
+0]
+#800
+1$
+1]
+b100 l"
+b0 Z"
+#802
+06
+0s
+b11 N"
+1@"
+1?"
+0C"
+#805
+0$
+0]
+#810
+1$
+1]
+b1 Z"
+#812
+1@
+1}
+1X"
+#815
+0$
+0]
+#820
+1$
+1]
+b10 Z"
+#822
+0@
+0}
+#825
+0$
+0]
+#830
+1$
+1]
+b11 Z"
+#832
+b101 Y
+1.
+1k
+b1001110001000 U"
+0V"
+0X"
+#835
+0$
+0]
+#840
+1$
+1]
+b1001110001000 L"
+b101 P"
+b1 O"
+b100 Z"
+0a!
+1_!
+1^!
+1[!
+#842
+b1011 Y
+0.
+13
+0k
+1p
+b101 m"
+b101000001110110 T"
+#845
+0$
+0]
+#850
+1$
+1]
+b101 l"
+b101 Z"
+b101000001110110 M"
+12"
+b10111001100011000 n"
+1h"
+1W
+#852
+03
+0p
+#855
+0$
+0]
+#860
+1$
+1]
+b10111001100011000 f"
+b110 Z"
+1R
+1Q
+0P
+0N
+1M
+0K
+1I
+1H
+1G
+0F
+#865
+0$
+0]
+#870
+1$
+1]
+b111 Z"
+#875
+0$
+0]
+#880
+1$
+1]
+b1000 Z"
+#882
+19
+1v
+b11 m"
+#885
+0$
+0]
+#890
+1$
+1]
+b11 l"
+b1001 Z"
+0h"
+0W
+#892
+09
+0v
+#895
+0$
+0]
+#900
+1$
+1]
+b1010 Z"
+#905
+0$
+0]
+#910
+1$
+1]
+b1011 Z"
+#912
+17
+1t
+1V"
+b1 N"
+0?"
+1C"
+b110 m"
+#915
+0$
+0]
+#920
+1$
+1]
+b110 l"
+b0 Z"
+#922
+07
+0t
+b11 N"
+1?"
+0C"
+#925
+0$
+0]
+#930
+1$
+1]
+b1 Z"
+#932
+b11111010000 A
+01!
+00!
+0.!
+1-!
+1+!
+1)!
+#935
+0$
+0]
+#940
+1$
+1]
+b10 Z"
+#942
+1@
+1}
+1X"
+#945
+0$
+0]
+#950
+1$
+1]
+b11 Z"
+#952
+0@
+0}
+#955
+0$
+0]
+#960
+1$
+1]
+b100 Z"
+#962
+b11 Y
+1,
+1i
+b101110111000 U"
+0V"
+0X"
+#965
+0$
+0]
+#970
+1$
+1]
+b101110111000 L"
+b11 Q"
+b10 O"
+b101 Z"
+1c!
+1b!
+1\!
+0[!
+#972
+b1011 Y
+0,
+13
+0i
+1p
+b111 m"
+b101001101110110 T"
+#975
+0$
+0]
+#980
+1$
+1]
+b111 l"
+b110 Z"
+b101001101110110 M"
+16"
+15"
+1i"
+b1 o"
+b110 m"
+1X
+#982
+03
+0p
+b0 o"
+b1 o"
+#985
+0$
+0]
+#990
+1$
+1]
+b1 p"
+b111 Z"
+b110 l"
+0i"
+b0 o"
+0X
+#995
+0$
+0]
+#1000
+1$
+1]
+b1000 Z"
+b0 p"
+#1005
+0$
+0]
+#1010
+1$
+1]
+b1001 Z"
+#1012
+17
+1t
+1V"
+b1 N"
+0?"
+1C"
+#1015
+0$
+0]
+#1020
+1$
+1]
+b0 Z"
+#1022
+07
+0t
+b11 N"
+1?"
+0C"
+#1025
+0$
+0]
+#1030
+1$
+1]
+b1 Z"
+#1032
+b1111101000 A
+10!
+0/!
+1.!
+0)!
+#1035
+0$
+0]
+#1040
+1$
+1]
+b10 Z"
+#1042
+1@
+1}
+1X"
+#1045
+0$
+0]
+#1050
+1$
+1]
+b11 Z"
+#1052
+0@
+0}
+#1055
+0$
+0]
+#1060
+1$
+1]
+b100 Z"
+#1062
+b1 Y
+1*
+1g
+b1111101000 U"
+0V"
+0X"
+#1065
+0$
+0]
+#1070
+1$
+1]
+b1111101000 L"
+b1 R"
+b11 O"
+b101 Z"
+0c!
+1a!
+0\!
+#1072
+b1011 Y
+0*
+13
+0g
+1p
+b111 m"
+b101001100010110 T"
+#1075
+0$
+0]
+#1080
+1$
+1]
+b111 l"
+b110 Z"
+b101001100010110 M"
+09"
+08"
+b10111011100000000 n"
+1h"
+1W
+#1082
+03
+0p
+#1085
+0$
+0]
+#1090
+1$
+1]
+b10111011100000000 f"
+b111 Z"
+0R
+0Q
+1K
+#1095
+0$
+0]
+#1100
+1$
+1]
+b1000 Z"
+#1105
+0$
+0]
+#1110
+1$
+1]
+b1001 Z"
+#1112
+19
+1v
+b11 m"
+#1115
+0$
+0]
+#1120
+1$
+1]
+b11 l"
+b1010 Z"
+0h"
+0W
+#1122
+09
+0v
+#1125
+0$
+0]
+#1130
+1$
+1]
+b1011 Z"
+#1135
+0$
+0]
+#1140
+1$
+1]
+b1100 Z"
+#1142
+18
+1u
+b10 N"
+0@"
+1C"
+b1000 m"
+#1145
+0$
+0]
+#1150
+1$
+1]
+b1000 l"
+b0 Z"
+#1152
+08
+0u
+b11 N"
+1@"
+0C"
+#1155
+0$
+0]
+#1160
+1$
+1]
+b1 Z"
+#1165
+0$
+0]
+#1170
+1$
+1]
+b10 Z"
+#1175
+0$
+0]
+#1180
+1$
+1]
+b11 Z"
+#1185
+0$
+0]
+#1190
+1$
+1]
+b100 Z"
+#1195
+0$
+0]
+#1200
+1$
+1]
+b101 Z"
+#1205
+0$
+0]
+#1210
+1$
+1]
+b110 Z"
+#1215
+0$
+0]
+#1220
+1$
+1]
+b111 Z"
+#1225
+0$
+0]
+#1230
+1$
+1]
+b1000 Z"
+#1235
+0$
+0]
+#1240
+1$
+1]
+b1001 Z"
+#1245
+0$
+0]
+#1250
+1$
+1]
+b1010 Z"
+#1255
+0$
+0]
+#1260
+1$
+1]
+b1011 Z"
+#1265
+0$
+0]
+#1270
+1$
+1]
+b1100 Z"
+#1275
+0$
+0]
+#1280
+1$
+1]
+b1101 Z"
+#1285
+0$
+0]
+#1290
+1$
+1]
+b1110 Z"
+#1295
+0$
+0]
+#1300
+1$
+1]
+b1111 Z"
+#1305
+0$
+0]
+#1310
+1$
+1]
+b10000 Z"
+1Y"
+b0 Z"
+1A"
+b0 m"
+1k"
+1D"
+#1315
+0$
+0]
+#1320
+1$
+1]
+b0 l"
+b1 Z"
+0Y"
+0A"
+0j"
+0B"
+#1325
+0$
+0]
+#1330
+1$
+1]
+b0 Z"
+#1335
+0$
+0]
+#1340
+1$
+1]
+#1345
+0$
+0]
+#1350
+1$
+1]
+#1355
+0$
+0]
+#1360
+1$
+1]
+#1365
+0$
+0]
+#1370
+1$
+1]
+#1375
+0$
+0]
+#1380
+1$
+1]
+#1385
+0$
+0]
+#1390
+1$
+1]
+#1395
+0$
+0]
+#1400
+1$
+1]
+#1405
+0$
+0]
+#1410
+1$
+1]
+#1415
+0$
+0]
+#1420
+1$
+1]
+#1425
+0$
+0]
+#1430
+1$
+1]
+#1435
+0$
+0]
+#1440
+1$
+1]
+#1445
+0$
+0]
+#1450
+1$
+1]
+#1455
+0$
+0]
+#1460
+1$
+1]
+#1465
+0$
+0]
+#1470
+1$
+1]
+#1475
+0$
+0]
+#1480
+1$
+1]
+#1485
+0$
+0]
+#1490
+1$
+1]
+#1495
+0$
+0]
+#1500
+1$
+1]
+#1505
+0$
+0]
+#1510
+1$
+1]
+#1515
+0$
+0]
+#1520
+1$
+1]
+#1525
+0$
+0]
+#1530
+1$
+1]
+#1535
+0$
+0]
+#1540
+1$
+1]
+#1545
+0$
+0]
+#1550
+1$
+1]
+#1555
+0$
+0]
+#1560
+1$
+1]
+#1565
+0$
+0]
+#1570
+1$
+1]
+#1575
+0$
+0]
+#1580
+1$
+1]
+#1585
+0$
+0]
+#1590
+1$
+1]
+#1595
+0$
+0]
+#1600
+1$
+1]
+#1605
+0$
+0]
+#1610
+1$
+1]
+#1615
+0$
+0]
+#1620
+1$
+1]
+#1625
+0$
+0]
+#1630
+1$
+1]
+#1635
+0$
+0]
+#1640
+1$
+1]
