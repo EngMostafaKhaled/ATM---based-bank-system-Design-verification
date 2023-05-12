@@ -2,6 +2,7 @@
 `include "card_handling.v"
 `include "timer.v"
 `include "user_interface.v"
+
 module ATM_TOP #(parameter  P_WIDTH = 16,
                             B_WIDTH = 20, 
 							C_WIDTH = 6)
@@ -29,20 +30,23 @@ module ATM_TOP #(parameter  P_WIDTH = 16,
 
     input wire                      enter_button,
     input wire                      cancel_button,
-    input wire                      correct_button,
+    //input wire                      correct_button,
 
     input wire                      withdraw_button,
     input wire                      deposit_button,
     input wire                      show_balance,
 	
 	input wire                      another_service,
+
+    input wire                      English_button,
+    input wire                      Arabic_button,
 	
 
-	input wire                      touch_100_button,
-    input wire                      touch_300_button,
-    input wire                      touch_500_button,
-	input wire                      touch_700_button,
-    input wire                      touch_1000_button,
+	// input wire                      touch_100_button,
+    // input wire                      touch_300_button,
+    // input wire                      touch_500_button,
+	// input wire                      touch_700_button,
+    // input wire                      touch_1000_button,
 	input wire                      multiple_100_button,
     input wire                      multiple_1000_button,
 
@@ -58,13 +62,14 @@ module ATM_TOP #(parameter  P_WIDTH = 16,
 	
 	
 	//output from ATM_FSM
+
+	output wire	                         card_out,
 	
 	output wire  [B_WIDTH-1:0]     updated_balance, //output from ATM_FSM and also transmitted to card_handling to update user data
 	output wire                    operation_done, 
 	output wire                    error,
 	output wire                    wrong_password
 	
-
 	);
 
 
@@ -90,8 +95,9 @@ wire                         time_out ; //flag to ATM_FSM that time out the card
 wire                         start_timer ; // to adjust timer (start running time)
 wire                         restart_timer; //to reset timer between states 
 
-wire                         card_out ;
+//wire                         card_out ;
 
+wire     [1:0]               language ;
 
 card_handling U0_card_handling (
     .clk(clk),
@@ -100,9 +106,12 @@ card_handling U0_card_handling (
     .card_number(card_number),
     .card_in(card_in),
 	.card_out(card_out),
-    .updated_balance(updated_balance),
+    
+	.updated_balance(updated_balance),
+
     .password(password),
     .balance(balance),
+	.operation_done(operation_done),
     .pass_en(pass_en)
     
 );
@@ -123,28 +132,33 @@ user_interface U0_user_interface (
 	.button_9(button_9),
     .card_in(card_in),
 	
-	.touch_100_button(touch_100_button),
-	.touch_300_button(touch_300_button),
-	.touch_500_button(touch_500_button),
-	.touch_700_button(touch_700_button),
-	.touch_1000_button(touch_1000_button),
+	// .touch_100_button(touch_100_button),
+	// .touch_300_button(touch_300_button),
+	// .touch_500_button(touch_500_button),
+	// .touch_700_button(touch_700_button),
+	// .touch_1000_button(touch_1000_button),
 	.multiple_100_button(multiple_100_button),
 	.multiple_1000_button(multiple_1000_button),
 	
     .enter_button(enter_button),
     .cancel_button(cancel_button),
-    .correct_button(correct_button),
+    // .correct_button(correct_button),
 	
     .withdraw_button(withdraw_button),
     .deposit_button(deposit_button),
 	.show_balance(show_balance),
 	
 	.another_service(another_service),
+
+	.English_button(English_button),
+	.Arabic_button(Arabic_button),
 	//outputs
 	.entry_value(entry_value),
 	//.entry_value(chosen_deposit_value),
 	.in_password(in_password),
-	.operation(operation)
+	.operation(operation),
+	.language(language)
+
 	
 );
 
@@ -176,7 +190,7 @@ ATM_FSM U0_ATM_FSM (
 	.correction_button(correct_button),
 	.another_service(another_service),
 	
-	//.language(language),
+	.language(language),
 	.operation(operation),
 	
 	.entry_value(entry_value),

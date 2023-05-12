@@ -32,6 +32,9 @@ reg                       deposit_button  ;
 reg                       show_balance    ;
 
 reg                       another_service ;
+
+reg                       English_button  ;
+reg                       Arabic_button   ;
 //reg                       language ;
 
 reg                       touch_100_button;
@@ -70,23 +73,28 @@ begin
     reset() ;
 
     #5
-    card_number = 6'b111011 ;
+    card_number = 6'b0 ;
     #5
     card_in = 1'b1 ;
     #10
     card_in = 1'b0 ;
 
+                    //************** CHOOSE LANGUAGE ****************
+    #20
+    English_button = 1'b1 ;
+    #10
+    English_button = 1'b0 ;
 
                     //********** ENTER PASSWORD ****************
     #20
-    //in_password  = 'b0011_0101_0000_0110 ;
+    //in_password  = 'b0011_0011_0111_0000 ;
     press_button(4'd3);
     #10
-    press_button(4'd5);
+    press_button(4'd3);
+    #10
+    press_button(4'd7);
     #10
     press_button(4'd0);
-    #10
-    press_button(4'd6);
     #10
     press_button(4'd11);
 
@@ -159,23 +167,29 @@ begin
     ////////////////////// ************** ANOTHER USER WITH WRONG PASSWORD *************** /////////////////////////////
 
     #5
-    card_number = 6'b110001 ;
+    card_number = 6'b1 ;
     #5
     card_in = 1'b1 ;
     #10
     card_in = 1'b0 ;
 
+                    //************** CHOOSE LANGUAGE ****************
+    #20
+    
+    English_button = 1'b1 ;
+    #10
+    English_button = 1'b0 ;
 
                     //********** ENTER PASSWORD ****************
     #20
-    //in_password  = 'b0011_0011_0111_0000 ;
+    //in_password  = 'b0011_0101_0000_0110 ;
     press_button(4'd3);
     #10
-    press_button(4'd3);
+    press_button(4'd5);
+    #10
+    press_button(4'd0);
     #10
     press_button(4'd7);
-    #10
-    press_button(4'd1);
     #10
     press_button(4'd11);
 
@@ -185,14 +199,14 @@ begin
 
                     //********** ENTER PASSWORD ****************
     #20
-    //in_password  = 'b0011_0011_0111_0000 ;
+    //in_password  = 'b0011_0101_0000_0110 ;
     press_button(4'd3);
     #10
-    press_button(4'd3);
-    #10
-    press_button(4'd7);
+    press_button(4'd5);
     #10
     press_button(4'd0);
+    #10
+    press_button(4'd6);
     #10
     press_button(4'd11);
 
@@ -233,12 +247,18 @@ begin
     ////////////////////// ************** ANOTHER USER *************** /////////////////////////////
 
     #5
-    card_number = 6'b110011 ;
+    card_number = 6'b10 ;
     #5
     card_in = 1'b1 ;
     #10
     card_in = 1'b0 ;
 
+                    //************** CHOOSE LANGUAGE ****************
+    #20
+    
+    English_button = 1'b1 ;
+    #10
+    English_button = 1'b0 ;
 
                     //********** ENTER PASSWORD ****************
     #20
@@ -349,7 +369,7 @@ begin
     ////////////////////// ************** ANOTHER USER WITH RESET PASSWORD *************** /////////////////////////////
 
     #5
-    card_number = 6'b110001 ;
+    card_number = 6'b11 ;
     #5
     card_in = 1'b1 ;
     #10
@@ -436,6 +456,9 @@ begin
     show_balance    = 1'b0 ;
 
     another_service = 1'b0 ;
+
+    English_button  = 1'b0 ;
+    Arabic_button   = 1'b0 ;
 
     //withdraw_value       = 'd0;
     actual_deposit_value = 'd0;
@@ -537,6 +560,9 @@ ATM_TOP DUT(
     .show_balance(show_balance),
 
     .another_service(another_service),
+
+    .English_button(English_button),
+    .Arabic_button (Arabic_button ),    
     
     //.withdraw_value(withdraw_value),
     .actual_deposit_value(actual_deposit_value),

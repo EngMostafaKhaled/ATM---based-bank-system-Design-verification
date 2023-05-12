@@ -22,11 +22,13 @@ module ATM_FSM #(parameter  P_WIDTH = 16,
 
     input wire                       another_service,
 
-    //input wire                       language,
-    input wire     [1:0]             operation,  //operation is transmitted from user_interface    
-                                             	// withdraw --> 00
-                                                // deposit  --> 01
-                                                // balance  --> 10
+    input wire     [1:0]             language,      // English --> 2'b01
+                                                    // Arabic  --> 2'b10
+    
+    input wire     [1:0]             operation,     // operation is transmitted from user_interface    
+                                             	    // withdraw --> 00
+                                                    // deposit  --> 01
+                                                    // balance  --> 10
 
     //input wire     [B_WIDTH-1:0]     withdraw_value,
     input wire     [B_WIDTH-1:0]     actual_deposit_value,
@@ -42,19 +44,20 @@ module ATM_FSM #(parameter  P_WIDTH = 16,
     output reg                       start_timer, // to adjust timer (start running time)
     output wire                      restart_timer, // to reset timer between states 
 
-    output reg                      card_out
+    output reg                       card_out
 );
 
 
 localparam          IDLE             = 4'b0000 ,
-                    WRITE_PASS       = 4'b0001 ,
-                    CHECK_PASS       = 4'b0010 ,
-                    OPERATION        = 4'b0011 ,
-                    WRITE_WITHDRAW   = 4'b0100 ,
-                    WITHDRAW         = 4'b0101 ,
-                    WRITE_DEPOSIT    = 4'b0110 ,
-                    DEPOSIT          = 4'b0111 ,
-                    BALANCE          = 4'b1000 ;
+                    LANGUAGE         = 4'b0001 ,
+                    WRITE_PASS       = 4'b0010 ,
+                    CHECK_PASS       = 4'b0011 ,
+                    OPERATION        = 4'b0100 ,
+                    WRITE_WITHDRAW   = 4'b0101 ,
+                    WITHDRAW         = 4'b0110 ,
+                    WRITE_DEPOSIT    = 4'b0111 ,
+                    DEPOSIT          = 4'b1000 ,
+                    BALANCE          = 4'b1001 ;
 
 
 reg      [3:0]      current_state ,
@@ -116,13 +119,14 @@ end
 //next state logic
 always @ (*)
 begin
-    error_count = 2'b0;
+    error_count = error_count_reg;
 
     case (current_state)
     IDLE : begin
+        error_count = 'b0;
         if(pass_en)
         begin
-            next_state = WRITE_PASS ;
+            next_state = LANGUAGE ;
         end
         else
         begin
@@ -130,7 +134,27 @@ begin
         end
     end
 
+    LANGUAGE : begin
+        if(time_out || cancel_button) // if threshold time has passed, the operation will be canceled (back to idle)
+        begin
+            next_state = IDLE ;
+        end
+        else
+        begin
+            if(language == 2'b01 || language == 2'b10)
+            begin
+                next_state = WRITE_PASS ;
+            end
+            else
+            begin
+                next_state = LANGUAGE ;
+            end
+        end
+        
+    end
+
     WRITE_PASS : begin
+        error_count = error_count_reg;
         if(time_out || cancel_button)
         begin
             next_state = IDLE ;
@@ -193,6 +217,7 @@ begin
     end
 
     WRITE_WITHDRAW : begin
+         error_count = error_count_reg;
         if(time_out || cancel_button)
         begin
             next_state = IDLE ;
@@ -231,7 +256,7 @@ begin
             end
         end
 
-        else if(error)
+        else //if(error)
         begin
             if(error_count_reg == 2'b10)
             begin
@@ -245,14 +270,15 @@ begin
             end
         end
 
-        else
-        begin
-            error_count = 2'b0;
-            next_state = WITHDRAW ;
-        end
+        // else
+        // begin
+        //     error_count = 2'b0;
+        //     next_state = WITHDRAW ;
+        // end
     end
 
     WRITE_DEPOSIT : begin
+         error_count = error_count_reg;
         if(time_out || cancel_button)
         begin
             next_state = IDLE ;
@@ -292,7 +318,7 @@ begin
             end 
         end
 
-        else if(error)
+        else //if(error)
         begin
             if(error_count_reg == 2'b10)
             begin
@@ -306,11 +332,11 @@ begin
             end
         end
 
-        else
-        begin
-            next_state = DEPOSIT ;
-            error_count = 2'b0;
-        end
+        // else
+        // begin
+        //     next_state = DEPOSIT ;
+        //     error_count = 2'b0;
+        // end
     end
 
     BALANCE : begin
@@ -348,6 +374,25 @@ begin
         error = 1'b0 ;
         updated_balance_comb = updated_balance ; 
         start_timer = 1'b0 ;
+        card_out = 1'b0 ;
+    end
+
+    LANGUAGE : begin
+        wrong_password = 1'b0 ;
+        operation_done = 1'b0 ;
+        error = 1'b0 ;
+        updated_balance_comb = updated_balance ; 
+
+        start_timer = 1'b1 ;
+
+        if(time_out || cancel_button) 
+        begin
+            card_out = 1'b1 ;
+        end
+        else
+        begin
+            card_out = 1'b0 ;
+        end  
     end
 
     WRITE_PASS : begin
@@ -369,19 +414,20 @@ begin
 
     CHECK_PASS : begin
         operation_done = 1'b0 ;
-        error = 1'b0 ;
+        
         updated_balance_comb = updated_balance ; 
         start_timer = 1'b0 ;
-        
         card_out = 1'b0 ;
 
         if(in_password == user_password)
         begin
             wrong_password = 1'b0 ;
+            error = 1'b0 ;
         end
         else
         begin
             wrong_password = 1'b1 ;
+            error = 1'b1 ;
         end
     end
 
@@ -511,7 +557,7 @@ begin
 
     BALANCE : begin
         wrong_password = 1'b0 ;
-        operation_done = 1'b0 ;
+        operation_done = 1'b1 ;
         error = 1'b0 ;
         updated_balance_comb = updated_balance ; 
         start_timer = 1'b1 ;
@@ -530,6 +576,6 @@ end
 
 
 
-assign restart_timer = (operation == 2'b00) || (operation == 2'b01) || (operation == 2'b10);
+assign restart_timer = another_service || enter_button || (language == 2'b01) || (language == 2'b10) || (operation == 2'b00) || (operation == 2'b01) || (operation == 2'b10);
 
 endmodule

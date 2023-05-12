@@ -19,13 +19,13 @@ module user_interface #(parameter  	P_WIDTH = 16,
 
     input wire                      enter_button,
     input wire                      cancel_button,
-    input wire                      correct_button,
+    // input wire                      correct_button,
 
-	input wire                      touch_100_button,
-    input wire                      touch_300_button,
-    input wire                      touch_500_button,
-	input wire                      touch_700_button,
-    input wire                      touch_1000_button,
+	// input wire                      touch_100_button,
+    // input wire                      touch_300_button,
+    // input wire                      touch_500_button,
+	// input wire                      touch_700_button,
+    // input wire                      touch_1000_button,
 	input wire                      multiple_100_button,
     input wire                      multiple_1000_button,
 
@@ -35,13 +35,18 @@ module user_interface #(parameter  	P_WIDTH = 16,
 
     input wire                      another_service,
 
+    input wire                      English_button,
+    input wire                      Arabic_button,
+
 
    /*  output reg     [B_WIDTH-1:0]    withdraw_value, //written by user 
     output reg     [B_WIDTH-1:0]    deposit_value, //written by user */ 
 	output reg     [B_WIDTH-1:0]    entry_value, //written by user 
 
     output reg     [P_WIDTH-1:0]    in_password, //written by user 
-	output reg     [1:0]            operation
+	output reg     [1:0]            operation,
+
+	output reg     [1:0]	        language
 
 );
 
@@ -77,7 +82,7 @@ begin
 	else
 	begin
 		in_password     <= in_password_temp ;
-		entry_value  <= entry_value_temp ;
+		entry_value     <= entry_value_temp ;
 		//deposit_value   <= deposit_value_temp ;
 		
 	end
@@ -96,47 +101,47 @@ begin
 	end
 	else if(withdraw_hold)
 	begin
-		if(touch_100_button)
-		begin
-			entry_value_temp = 'd100;
-			//deposit_value_temp  = 'd100;
-			withdraw_hold       = 1'b0; 
-			withdraw_100_hold   = 1'b0;
-			withdraw_1000_hold  = 1'b0;
-		end
-		else if(touch_300_button)
-		begin
-			entry_value_temp = 'd300;
-			//deposit_value_temp  = 'd300;
-			withdraw_hold  		= 1'b0; 
-			withdraw_100_hold   = 1'b0;
-			withdraw_1000_hold  = 1'b0;
-		end
-		else if(touch_500_button)
-		begin
-			entry_value_temp = 'd500;
-			//deposit_value_temp  = 'd500;
-			withdraw_hold  		= 1'b0; 
-			withdraw_100_hold   = 1'b0;
-			withdraw_1000_hold  = 1'b0;
-		end
-		else if(touch_700_button)
-		begin
-			entry_value_temp = 'd700;
-			//deposit_value_temp  = 'd700;
-			withdraw_hold  		= 1'b0; 
-			withdraw_100_hold   = 1'b0;
-			withdraw_1000_hold  = 1'b0;
-		end
-		else if(touch_1000_button)
-		begin
-			entry_value_temp = 'd1000;
-			//deposit_value_temp  = 'd1000;
-			withdraw_hold  		= 1'b0; 
-			withdraw_100_hold   = 1'b0;
-			withdraw_1000_hold  = 1'b0;
-		end
-		else if(multiple_100_button)
+		// if(touch_100_button)
+		// begin
+		// 	entry_value_temp = 'd100;
+		// 	//deposit_value_temp  = 'd100;
+		// 	withdraw_hold       = 1'b0; 
+		// 	withdraw_100_hold   = 1'b0;
+		// 	withdraw_1000_hold  = 1'b0;
+		// end
+		// else if(touch_300_button)
+		// begin
+		// 	entry_value_temp = 'd300;
+		// 	//deposit_value_temp  = 'd300;
+		// 	withdraw_hold  		= 1'b0; 
+		// 	withdraw_100_hold   = 1'b0;
+		// 	withdraw_1000_hold  = 1'b0;
+		// end
+		// else if(touch_500_button)
+		// begin
+		// 	entry_value_temp = 'd500;
+		// 	//deposit_value_temp  = 'd500;
+		// 	withdraw_hold  		= 1'b0; 
+		// 	withdraw_100_hold   = 1'b0;
+		// 	withdraw_1000_hold  = 1'b0;
+		// end
+		// else if(touch_700_button)
+		// begin
+		// 	entry_value_temp = 'd700;
+		// 	//deposit_value_temp  = 'd700;
+		// 	withdraw_hold  		= 1'b0; 
+		// 	withdraw_100_hold   = 1'b0;
+		// 	withdraw_1000_hold  = 1'b0;
+		// end
+		// else if(touch_1000_button)
+		// begin
+		// 	entry_value_temp = 'd1000;
+		// 	//deposit_value_temp  = 'd1000;
+		// 	withdraw_hold  		= 1'b0; 
+		// 	withdraw_100_hold   = 1'b0;
+		// 	withdraw_1000_hold  = 1'b0;
+		// end
+		/*else*/ if(multiple_100_button)
 		begin
 			entry_value_temp = entry_value ;
 			//deposit_value_temp  = deposit_value ;
@@ -363,7 +368,7 @@ begin
 		temp3 <= 'd0;
 		temp4 <= 'd0;
     end
-    else if(correct_button || card_in)
+    else if(card_in)
 	begin
 		count <= 'b0 ;
 	end
@@ -630,6 +635,20 @@ always @(*) begin
 	end
 end
 
-
+always @(*) 
+begin
+	if(English_button)
+	begin
+		language = 2'b01;
+	end	
+	else if(Arabic_button)
+	begin
+		language = 2'b10;
+	end
+	else
+	begin
+		language = 2'b00;  // default value
+	end
+end
 
 endmodule

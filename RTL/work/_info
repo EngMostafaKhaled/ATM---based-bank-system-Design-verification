@@ -1,0 +1,157 @@
+m255
+K4
+z2
+!s99 nomlopt
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/EECE_4.2_last/EDA/Group_6_prj_1/RTL
+T_opt
+!s110 1683213638
+VAE_K`E^48mJSmP7WcfOX92
+04 7 4 work ATM_TOP fast 0
+=1-844bf550f63d-6453cd44-b0-8e4
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+vATM_FSM
+Z2 !s110 1683213526
+!i10b 1
+!s100 4eVSTeBJ4QMmF8j_`ica:1
+I@z9O1CT=Tbaa4>9UWPdhH0
+R0
+w1682868734
+8ATM_FSM.v
+FATM_FSM.v
+!i122 6
+L0 1 581
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z5 !s108 1683213526.000000
+Z6 !s107 user_interface.v|timer.v|card_handling.v|ATM_FSM.v|./ATM_TOP.v|
+Z7 !s90 ./ATM_TOP.v|
+!i113 0
+Z8 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+n@a@t@m_@f@s@m
+vATM_tb
+!s110 1683213521
+!i10b 1
+!s100 c[F[VA8;df3;`zKE2CAHk3
+IRVoKRGM;56O<;ZQfN6jY?1
+R0
+w1682596120
+8./ATM_tb.v
+F./ATM_tb.v
+!i122 5
+L0 3 578
+R3
+R4
+r1
+!s85 0
+31
+!s108 1683213521.000000
+!s107 ./ATM_tb.v|
+!s90 ./ATM_tb.v|
+!i113 0
+R8
+R1
+n@a@t@m_tb
+vATM_TOP
+R2
+!i10b 1
+!s100 M65a5K;cDK;lF^404`ES23
+IEghZzE:[f?Xloebk;K]J[1
+R0
+w1682814712
+8./ATM_TOP.v
+F./ATM_TOP.v
+!i122 6
+L0 6 205
+R3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R1
+n@a@t@m_@t@o@p
+vcard_handling
+R2
+!i10b 1
+!s100 =K26JdAMSJ:_d6UiPd>zU2
+IWGKMN42Jog8d]V:o^Tacn0
+R0
+w1682860191
+8card_handling.v
+Fcard_handling.v
+!i122 6
+L0 1 97
+R3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R1
+vtimer
+R2
+!i10b 1
+!s100 4_z8jeI4IY=RR9:`m7BcF3
+I=Dj8=H3bCW3Po<1;9S2jz0
+R0
+w1682596116
+8timer.v
+Ftimer.v
+!i122 6
+L0 1 47
+R3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R1
+vuser_interface
+R2
+!i10b 1
+!s100 iDn]N1[HRiYXXBClJEjJd2
+II9oz1zX7>1Z7PNCQAi7Kb3
+R0
+w1682812788
+8user_interface.v
+Fuser_interface.v
+!i122 6
+L0 1 654
+R3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R1
